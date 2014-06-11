@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         shell: {
             patternlab: {
-                command: "php core/builder.php -wr"
+                command: "php core/builder.php -wpr"
             },
         },
         compass: {                    // Task
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
                     spawn: false
                 }
             },
-            scss: {
+            css: {
                 files: ['source/scss/*.scss'],
-                tasks: ['compass:dist'],
+                tasks: ['compass'],
                 options: {
                     livereload: true,
                     spawn: false
@@ -44,5 +44,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compass');
 
     // Tasks
-    grunt.registerTask('default', ['watch', 'compass:dist']);
+    grunt.registerTask('default', ['watch', 'compass']);
     };
