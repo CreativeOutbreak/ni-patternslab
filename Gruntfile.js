@@ -22,27 +22,44 @@ module.exports = function(grunt) {
                 files: ['source/_patterns/**/*.mustache', 'source/_patterns/**/*.json', 'source/_data/*.json'],
                 tasks: ['shell:patternlab'],
                 options: {
-                    livereload: true,
-                    spawn: false
+                    nospawn: true 
                 }
             },
             css: {
-                files: ['source/scss/*.scss'],
+                files: ['source/scss/**/*.scss', 'source/scss/*.scss'],
                 tasks: ['compass'],
                 options: {
-                    livereload: true,
-                    spawn: false
+                    spawn: true 
                 }
            }
 
+        },
+        parallel: {
+          html: {
+            options: {
+              stream: true
+            },
+            tasks: [{
+              grunt: true,
+              args: ['watch:html']
+            }, {
+              grunt: true,
+              args: ['watch:css']
+            }]
+          },
         }
     });
 
     // Plugins
+    grunt.loadNpmTasks('grunt-parallel');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-compass');
-
+    
+    grunt.registerTask('dev', 'launch webserver and watch tasks', [
+    'parallel:html',
+  ]);
+    
     // Tasks
-    grunt.registerTask('default', ['watch', 'compass']);
+    grunt.registerTask('default', ['dev']);
     };
