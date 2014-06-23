@@ -1,6 +1,7 @@
 {
 	"title" : "Pattern Lab",
 	"htmlClass": "pl",
+	"bodyId": "ni",
 	"bodyClass": "body",
 	"img": {
 		"landscape-4x3": {

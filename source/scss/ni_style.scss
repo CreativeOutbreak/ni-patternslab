@@ -47,3 +47,25 @@
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
+
+
+// New Internationalist styling
+//@import "ni_scss/variables";
+//@import "ni_scss/mixins";
+@import "ni_scss/patterns/color";
+
+@media (min-width: $screen-xs-min) {    
+    @import "ni_scss/patterns/color-xs";
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    //@import "ni_scss/color-sm";
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    //@import "ni_scss/color-md";
+}
+
+@media (min-width: $screen-lg-min) {
+    //@import "ni_scss/color-lg";
+}
